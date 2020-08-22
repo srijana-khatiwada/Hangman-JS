@@ -44,12 +44,46 @@ body {
 
   .wrongLettersContainer {
     width: 150px;
-    margin: 150px 0px 0px 550px;
+    margin: 150px 0px 0px 600px;
     font-weight: bold;
   }
-
+  
+  .wrongLetter {
+    font-size: 35px;
+    display: inline;
+  }
   .rightLetters {
     display: inline;
     font-weight:bold ;
+  }
+
+  .checkWinStatus {
+    display: none;
+    margin: auto;
+    width: 200px;
+    background-color: #fff;
+    color: black;
+
+  }
+
+  .checkLostStatus {
+    display: none;
+    margin: auto;
+    width: 200px;
+    background-color: #fff;
+    color: black;
+
+  }
+
+  .btn {
+    width: 90px;
+    text-align: center;
+    background-color:  #2f4a66;
+    color: white;
+    font-weight: bold;
+    border-radius: 9%;
+    margin: 150px 0px 0px 320px;
+    padding: 5px;
+    font-size: 18px;
   }
   
