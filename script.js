@@ -5,6 +5,7 @@ let answerDiv = document.querySelector('.answerDiv');
 let dashes = document.querySelector('.dashes');
 let wrongLettersContainer = document.querySelector('.wrongLettersContainer');
 
+// ----------setters------------
 let guessedLetters = new Set();
 let wrongLetters = new Set();
 let rightLetters = new Set();
@@ -12,6 +13,7 @@ let count = 0;
 
 let animals = ['bear', 'giraffe', 'tiger', 'elephant', 'lion', 'dog', 'fox'];
 let i = 0 , j = 0 ; 
+// -----------generating random animal-------------
 let randomAnimal = animals[Math.floor(Math.random() * animals.length)];
   for(i = 0; i < randomAnimal.length ; i++) {
       entryDash = document.createElement('div');
@@ -20,7 +22,7 @@ let randomAnimal = animals[Math.floor(Math.random() * animals.length)];
       dashes.appendChild(entryDash);
   }
 
-// -------to display figure parts------------  
+// -------to display figure parts----------------- 
 
 function displayFigureParts() {
   let figures = Array.from(figureParts);
@@ -30,29 +32,31 @@ function displayFigureParts() {
     console.log(figures.length);
 }
 
-
+// entry dash is a DOM element so put it in a variable!
 let letters = document.querySelectorAll('.entryDash');
 
-  document.addEventListener('keypress', function(e) {
-     if( Array.from(guessedLetters).includes(e.key)) {
-       alert(`The letter "${e.key}" has been guessed already!`);
+// -----------event listener to take entries----------
 
-     }
-     else {
-       guessedLetters.add(e.key);
-       if (randomAnimal.includes(e.key) ) {
-         rightLetters.add(e.key);
-         console.log('true');
-         for(j = 0; j < randomAnimal.length; j++) {
-           if(randomAnimal[j] === e.key) {
-             letters[j].innerText = e.key;  
-           }
+document.addEventListener('keypress', function(e) {
 
-         }
+  if( Array.from(guessedLetters).includes(e.key)) {
+    alert(`The letter "${e.key}" has been guessed already!`);
+  }
 
-       }
-      //  checkWin();
-       else {
+  else {
+    guessedLetters.add(e.key);
+      if (randomAnimal.includes(e.key) ) {
+      rightLetters.add(e.key);
+      console.log('true');
+        for(j = 0; j < randomAnimal.length; j++) {
+          if(randomAnimal[j] === e.key) {
+            letters[j].innerText = e.key; 
+            checkWin();
+          }
+        }
+      }
+
+      else {
         wrongLetters.add(e.key);
         console.log('false'); 
         let wrongLetterDiv = document.createElement('h3');
@@ -62,21 +66,23 @@ let letters = document.querySelectorAll('.entryDash');
         displayFigureParts();
         count++;
         checkLost();
-
-      }
      }
-  
-  });
+  }
+});
 
 
   // ------------win and loss status popup-----------
 
-  function checkWin() {
-    if (Array.from(rightLetters).length === Array.from(randomAnimal).length) {
-      let checkWinStatus = document.querySelector('.checkWinStatus');
-      checkWinStatus.style.display = 'block';
-    }
+function checkWin() {
+  let win = Array.from(letters).every(box => {
+    return box.innerText ? true : false;
+  });
+
+  if (win) {
+    alert("winn");
   }
+}
+  
 
 function checkLost() {
   if (count === 6) {
@@ -87,7 +93,6 @@ function checkLost() {
       dashes.style.display = 'none';
     });
   }
-  
 }
 
 
