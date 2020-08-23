@@ -6,6 +6,7 @@ let dashes = document.querySelector('.dashes');
 let wrongLettersContainer = document.querySelector('.wrongLettersContainer');
 
 // ----------setters------------
+
 let guessedLetters = new Set();
 let wrongLetters = new Set();
 let rightLetters = new Set();
@@ -13,12 +14,13 @@ let count = 0;
 
 let animals = ['bear', 'giraffe', 'tiger', 'elephant', 'lion', 'dog', 'fox'];
 let i = 0 , j = 0 ; 
+
 // -----------generating random animal-------------
+
 let randomAnimal = animals[Math.floor(Math.random() * animals.length)];
   for(i = 0; i < randomAnimal.length ; i++) {
       entryDash = document.createElement('div');
       entryDash.classList.add('entryDash');
-      entryDash.innerHTML = ' _ ';
       dashes.appendChild(entryDash);
   }
 
@@ -26,14 +28,15 @@ let randomAnimal = animals[Math.floor(Math.random() * animals.length)];
 
 function displayFigureParts() {
   let figures = Array.from(figureParts);
-  // let counter = 0;
-     figures[count].style.display = 'block';
-    console.log(typeof(figures));
-    console.log(figures.length);
+  figures[count].style.display = 'block';
+  console.log(typeof(figures));
+  console.log(figures.length);
 }
 
 // entry dash is a DOM element so put it in a variable!
+
 let letters = document.querySelectorAll('.entryDash');
+
 
 // -----------event listener to take entries----------
 
@@ -74,15 +77,25 @@ document.addEventListener('keypress', function(e) {
   // ------------win and loss status popup-----------
 
 function checkWin() {
-  let win = Array.from(letters).every(box => {
+  // console.log(Array.from(letters));
+  let win = Array.from(letters).every(box =>
+   {
+    console.log(box.innerText ? true : false) ;
     return box.innerText ? true : false;
+     
   });
-
   if (win) {
-    alert("winn");
+    
+    alert("WUHUU!! You won! Click on try again to play again! ");
+    document.addEventListener('keypress', function(e) {
+      alert("Game is over. No entries will be accepted now!");
+      wrongLettersContainer.style.display = 'none';
+      dashes.style.display = 'none';
+    });
+
   }
 }
-  
+
 
 function checkLost() {
   if (count === 6) {

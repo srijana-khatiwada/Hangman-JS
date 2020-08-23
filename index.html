@@ -8,9 +8,11 @@
 </head>
 
 <body style="overflow: hidden;">
-    <h1 class="title">Hangman</h1>
-<div class="gameContainer">
-<svg height="250" width="200" class="figure-container">
+  <h1 class="title">Hangman</h1>
+  <!-- ------game container---------- -->
+
+    <div class="gameContainer">
+      <svg height="250" width="200" class="figure-container">
         <!--  Rod  -->
         <line x1="60" y1="20" x2="140" y2="20" />
         <line x1="140" y1="20" x2="140" y2="50" />
@@ -28,38 +30,30 @@
         <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
       </svg>
 
-<div class="answerDiv">
-<h3>
-  I'm an animal. Guess me!
-</h3>
-</div>
+    <div class="answerDiv">
+      <h3> I'm an animal. Guess me! </h3>
+      </div>
+
 <!-- wrong container -->
-<div class="wrongLettersContainer">
-  Wrong Letters
-<br>
-</div>
+
+    <div class="wrongLettersContainer">
+        Wrong Letters
+          <br>
+      </div>
+
 <!-- dashes -->
-<div class="dashes">
 
-</div>
+    <div class="dashes">
+    </div>
 
-<div class="checkWinStatus">
-  You win :) Click on try again to try again!
- </div>
- <div class="checkLostStatus">
-   You Lost :( Click on try again to try again!
- </div>
-<a href="./index.html">
-  <button class="btn">
-   Try again
- </button>
-</a>
- 
-</div>    
+    <a href="./index.html">
+      <button class="btn">
+          Try again
+        </button>
+      </a>
+      </div>    
 
-
-
+<!-- --------script file-------------- -->
   <script src="/script.js"></script>
   </body>
-  
 </html>
